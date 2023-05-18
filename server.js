@@ -1,4 +1,4 @@
-const https = require('https');
+import https from 'https';
 
 https.get('https://dechetgo.000webhostapp.com/', (res) => {
   let data = '';
