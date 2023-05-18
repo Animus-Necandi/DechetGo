@@ -1,20 +1,58 @@
 import https from 'https';
 
-https.get('https://dechetgo.000webhostapp.com/', (res) => {
-  let data = '';
-  res.on('data', (chunk) => {
-    data += chunk;
-  });
-  res.on('end', () => {
-    const dataArray = JSON.parse(data);
-    dataArray.forEach((element) => {
-      console.log(element);
-      console.log("\n"); // Ajout d'un saut de ligne
+try {
+  https.get('https://dechetgo.000webhostapp.com/', (res) => {
+    let data = '';
+    res.on('data', (chunk) => {
+      data += chunk;
     });
+    res.on('end', () => {
+      const dataArray = JSON.parse(data);
+      dataArray.forEach((element) => {
+        if (element.hasOwnProperty('idDecheterie')) {
+          console.log(element.idDecheterie);
+        }
+        if (element.hasOwnProperty('nomDecheterie')) {
+          console.log(element.nomDecheterie);
+        }
+        if (element.hasOwnProperty('adresseDecheterie')) {
+          console.log(element.adresseDecheterie);
+        }
+        if (element.hasOwnProperty('telDecheterie')) {
+          console.log(element.telDecheterie);
+        }
+        if (element.hasOwnProperty('mailDecheterie')) {
+          console.log(element.mailDecheterie);
+        }
+        console.log("\n");
+      });
+    });
+  }).on('error', (err) => {
+    console.error('Error: ' + err.message);
   });
-}).on('error', (err) => {
-  console.error('Error: ' + err.message);
-});
+} catch (error) {
+  console.error('Error:', error);
+}
+
+
+
+// import https from 'https';
+
+// https.get('https://dechetgo.000webhostapp.com/', (res) => {
+//   let data = '';
+//   res.on('data', (chunk) => {
+//     data += chunk;
+//   });
+//   res.on('end', () => {
+//     const dataArray = JSON.parse(data);
+//     dataArray.forEach((element) => {
+//       console.log(element);
+//       console.log("\n"); // Ajout d'un saut de ligne
+//     });
+//   });
+// }).on('error', (err) => {
+//   console.error('Error: ' + err.message);
+// });
 
 
 
