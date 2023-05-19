@@ -12,7 +12,7 @@ try {
 
       const options = {
         hostname: 'dechet-go-git-main-animus-necandi.vercel.app',
-        path: '/api/data',
+        path: '/',
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
